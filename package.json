@@ -1,0 +1,18 @@
+{
+  "name": "listsapp",
+  "version": "1.0.0",
+  "description": "stuff for my demo lists app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KaosLabs",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-sanitizer": "^1.0.4",
+    "mongoose": "^5.2.8"
+  }
+}
