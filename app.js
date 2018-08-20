@@ -3,14 +3,18 @@ var express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     expressSanitizer= require("express-sanitizer"),
-    List            = require("./models/list");
+    List            = require("./models/list"),
+    secrets         = require("./models/secrets");
 
-var mongodbUri = 'mongodb://todo-simplified:simple123@ds125892.mlab.com:25892/heroku_2g8p1h0f';
+// connection info to mlab mongo database
+// #TODO: figure out how to connect securely without publicly exposing username and password
+var mongodbUri = 'mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@ds125892.mlab.com:25892/heroku_2g8p1h0f';
+mongoose.connect(mongodbUri, {useNewUrlParser: true});
+
 
 app.use(express.static("assets"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-mongoose.connect(mongodbUri, {useNewUrlParser: true});
 app.use(expressSanitizer());
 
 app.get("/", function(req, res){
