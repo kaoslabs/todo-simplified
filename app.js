@@ -5,10 +5,12 @@ var express         = require("express"),
     expressSanitizer= require("express-sanitizer"),
     List            = require("./models/list");
 
+var mongodbUri = 'mongodb://todo-simplified:simple123@ds125892.mlab.com:25892/heroku_2g8p1h0f';
+
 app.use(express.static("assets"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-mongoose.connect("mongodb://localhost:27017/list_app", {useNewUrlParser: true});
+mongoose.connect(mongodbUri, {useNewUrlParser: true});
 app.use(expressSanitizer());
 
 app.get("/", function(req, res){
